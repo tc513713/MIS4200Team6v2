@@ -65,6 +65,17 @@ namespace Test_Project.Models
     public class RegisterViewModel
     {
         [Required]
+       
+        [Display(Name = "Username")]
+        public string UserName { get; set; }
+
+        [Required]
+        [RegularExpression(@"^(\(\d{3}\) |\d{3}-)\d{3}-\{4}$",
+        ErrorMessage = "Phone numbers must be in the format (xxx) xxx-xxxx or xxx-xxx-xxxx")]
+        [Display(Name = "Phone")]
+        public string Phone { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
