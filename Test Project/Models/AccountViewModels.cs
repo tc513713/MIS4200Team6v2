@@ -69,10 +69,9 @@ namespace Test_Project.Models
         [Display(Name = "Username")]
         public string UserName { get; set; }
 
-        [Required]
-        [RegularExpression(@"^(\(\d{3}\) |\d{3}-)\d{3}-\{4}$",
-        ErrorMessage = "Phone numbers must be in the format (xxx) xxx-xxxx or xxx-xxx-xxxx")]
         [Display(Name = "Phone")]
+        [DataType(DataType.PhoneNumber)]
+        [RegularExpression(@"^(\(\d{3}\) |\d{3}-)\d{3}-\d{4}$", ErrorMessage = "Phone numbers must be in the format (xxx) xxx-xxxx or xxx-xxx-xxxx")]
         public string Phone { get; set; }
 
         [Required]
