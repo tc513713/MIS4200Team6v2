@@ -64,10 +64,11 @@ namespace Test_Project.Models
 
     public class RegisterViewModel
     {
+      
         [Required]
-       
         [Display(Name = "Username")]
         public string UserName { get; set; }
+      
 
         [Display(Name = "Phone")]
         [DataType(DataType.PhoneNumber)]
