@@ -9,6 +9,7 @@
 
 </head>
 <body>
+
     <div class="navbar navbar-default-">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -21,13 +22,18 @@
                 <img alt="Image result for Centric Consulting logo" src="https://ww1.prweb.com/prfiles/2019/04/30/16275299/centric_logo_color.jpg" style="height: 50px; width: 280px" />&nbsp;
 
             </div>
+
             <div class="navbar-collapse collapse">
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Discover", "About", "Home")</li>
-                    <li>@Html.ActionLink("Support", "Contact", "Home")</li>
-                   <input type="text" placeholder="Search..">
-                      
+
+                    <li>@Html.ActionLink("Home", "Index", "Home", null, new { id = "HomeLink", style = "color: MidnightBlue" })</li>
+                    <li>@Html.ActionLink("Discover", "About", "Home", null, new { id = "DiscoverLink", style = "color: MidnightBlue" })</li>
+                    <li>@Html.ActionLink("Support", "Contact", "Home", null, new { id = "SupportLink", style = "color: MidnightBlue" })</li>
+
+                    <li><a href="https://www.twitter.com/centric" class="fa fa-twitter"></a></li>
+                    <li><a href="https://www.linkedin.com/company/centric-consulting" class="fa fa-linkedin"></a></li>
+                    <li><input type="text" placeholder="Search.." style="outline-color:midnightblue"></li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
