@@ -9,87 +9,101 @@
 
 
 <p class="text-success">@ViewBag.StatusMessage</p>
-<div>
-    <h4>Change your account settings</h4>
-    <hr />
-    <dl class="dl-horizon">
+<div class="row">
 
-
-        <dt>Password:</dt>
-        <dd>
-            [
-            @if (Model.HasPassword)
-            {
-                @Html.ActionLink("Change your password", "ChangePassword")
-            }
-            else
-            {
-                @Html.ActionLink("Create", "SetPassword")
-            }
-            ]
-
-
-        <dt>Phone Number:</dt>
-        <dd>
-
-            @if (Model.PhoneNumber != null)
-            {
-                <br />
-                <text>[&nbsp;&nbsp;@Html.ActionLink("Change", "AddPhoneNumber")&nbsp;&nbsp;]</text>
-                using (Html.BeginForm("RemovePhoneNumber", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                {
-                    @Html.AntiForgeryToken()
-                    <text>[<input type="submit" value="Remove" class="btn-link" />]</text>
-                }
-            }
-            else
-            {
-                <text>[&nbsp;&nbsp;@Html.ActionLink("Add", "AddPhoneNumber")  ]</Text>
-
-            <dt>First Name:</dt>
-            <dt>Last Name:</dt>
-            <dt>Email:</dt>
-            <dt>Job Title:</dt>
-            <dt>City:</dt>
-            <dt>Department:</dt>
-            <dt>Past Projects:</dt>
-
-
-            @*
-                <dt>Two-Factor Authentication:</dt>
-                <dd>
-                    <p>
-                        There are no two-factor authentication providers configured. See <a href="https://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
-                        for details on setting up this ASP.NET application to support two-factor authentication.
-                    </p>
-            *@
-            @*@if (Model.TwoFactor)
-                {
-                    using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <text>Enabled
-                        <input type="submit" value="Disable" class="btn btn-link" />
-                        </text>
-                    }
-                }
-                else
-                {
-                    using (Html.BeginForm("EnableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <text>Disabled
-                        <input type="submit" value="Enable" class="btn btn-link" />
-                        </text>
-                    }*@
-        }
-
-
-        </dl>
-        <p> </p>
+    <div class="col-md-4">
 
         <div>
+            <h2>Change your account settings</h2>
+            <hr />
+            <dl class="dl-horizon">
+                <dt>Password:</dt>
+                <dd>
+                    [
+                    @if (Model.HasPassword)
+                    {
+                        @Html.ActionLink("Change your password", "ChangePassword")
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Create", "SetPassword")
+                    }
+                    ]
 
+
+                <dt>Phone Number:</dt>
+                <dd>
+
+                    @if (Model.PhoneNumber != null)
+                    {
+                        <br />
+                        <text>[&nbsp;&nbsp;@Html.ActionLink("Change", "AddPhoneNumber")&nbsp;&nbsp;]</text>
+                        using (Html.BeginForm("RemovePhoneNumber", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <text>[<input type="submit" value="Remove" class="btn-link" />]</text>
+                        }
+                    }
+                    else
+                    {
+                        <text>[&nbsp;&nbsp;@Html.ActionLink("Add", "AddPhoneNumber")  ]</Text>
+
+
+
+                    <dt>First Name:</dt>
+                    <dt>Last Name:</dt>
+                    <dt>Email:</dt>
+                    <dt>Job Title:</dt>
+                    <dt>City:</dt>
+                    <dt>Department:</dt>
+                    <dt>Past Projects:</dt>
+
+
+                    @*
+                        <dt>Two-Factor Authentication:</dt>
+                        <dd>
+                            <p>
+                                There are no two-factor authentication providers configured. See <a href="https://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
+                                for details on setting up this ASP.NET application to support two-factor authentication.
+                            </p>
+                    *@
+                    @*@if (Model.TwoFactor)
+                        {
+                            using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <text>Enabled
+                                <input type="submit" value="Disable" class="btn btn-link" />
+                                </text>
+                            }
+                        }
+                        else
+                        {
+                            using (Html.BeginForm("EnableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <text>Disabled
+                                <input type="submit" value="Enable" class="btn btn-link" />
+                                </text>
+                            }*@
+                }
+
+
+                </dl>
+                <p> </p>
+
+                <div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h2> Recognition Progress </h2>
+            <p> Good Job! Once step closer...to the edge, and I'm about to break!!!! RIP Chester</p>
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                    70%
+                </div>
+            </div>
         </div>
     </div>
-
