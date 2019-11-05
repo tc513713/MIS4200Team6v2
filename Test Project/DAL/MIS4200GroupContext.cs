@@ -16,10 +16,7 @@ namespace Test_Project.DAL
 
         public DbSet<Employee> employees { get; set; }
         public DbSet<Value> Values { get; set; }
-        
 
-
-
-
+        public System.Data.Entity.DbSet<Test_Project.Models.TestCoreValues> TestCoreValues { get; set; }
     }
 }
