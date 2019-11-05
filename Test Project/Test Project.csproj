@@ -171,12 +171,15 @@
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TestCoreValues1Controller.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DAL\MIS4200GroupContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\MISGroupContext\Configuration.cs" />
+    <Compile Include="Models\GUID.cs" />
+    <Compile Include="Models\Recognition.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -251,6 +254,11 @@
     <Content Include="Views\Employees\Details.cshtml" />
     <Content Include="Views\Employees\Edit.cshtml" />
     <Content Include="Views\Employees\Index.cshtml" />
+    <Content Include="Views\TestCoreValues1\Create.cshtml" />
+    <Content Include="Views\TestCoreValues1\Delete.cshtml" />
+    <Content Include="Views\TestCoreValues1\Details.cshtml" />
+    <Content Include="Views\TestCoreValues1\Edit.cshtml" />
+    <Content Include="Views\TestCoreValues1\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
