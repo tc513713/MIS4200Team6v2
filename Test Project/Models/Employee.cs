@@ -27,15 +27,18 @@ namespace Test_Project.Models
 
         [Display(Name = "Mobile Phone Number")]
         public string phoneNumber { get; set; }
+  
         [DataType(DataType.PhoneNumber)]
-        [Required(ErrorMessage = "Phone Numbers Must be input in the(xxx) xxx - xxxx or xxx - xxx - xxxx Format")]
+        [Required]
+        [RegularExpression(@"^(\(\d{3}\) |\d{3}-)\d{3}-\d{4}$", ErrorMessage = "Phone numbers must be in the format (xxx) xxx-xxxx or xxx-xxx-xxxx")]
+
 
         [Display(Name = "LinkedIn URL")]
         public string linkedInURL { get; set; }
         [StringLength(20)]
 
         //[Display(Name = "Company Location")]
-        public string location { get; set; }
+        public string Location { get; set; }
         [Required(ErrorMessage = "Please enter a Centric Office Location")]
         [StringLength(30)]
 
