@@ -11,6 +11,7 @@ namespace Test_Project.Migrations.MISGroupContext
         {
             AutomaticMigrationsEnabled = true;
             MigrationsDirectory = @"Migrations\MISGroupContext";
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(Test_Project.DAL.MIS4200GroupContext context)

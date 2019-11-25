@@ -10,39 +10,44 @@ namespace Test_Project.Models
     {
         [Key]
         public int userId { get; set; }
+
         [Display(Name = "First Name")]
-        public string firstName { get; set; }
         [Required(ErrorMessage = "Employee First Name is Required")]
         [StringLength(20)]
+        public string firstName { get; set; }
+        
 
         [Display(Name = "Last Name")]
-        public string lastName { get; set; }
         [Required(ErrorMessage = "Employee Last Name is Required")]
         [StringLength(20)]
+        public string lastName { get; set; }
+        
 
         [Display(Name = "Most Used Email Address")]
-        public string email { get; set; }
         [Required(ErrorMessage = "Please enter a valid Centric email address")]
         [StringLength(60)]
+        public string email { get; set; }
+       
 
         [Display(Name = "Mobile Phone Number")]
-        public string phoneNumber { get; set; }
-  
         [DataType(DataType.PhoneNumber)]
         [Required]
         [RegularExpression(@"^(\(\d{3}\) |\d{3}-)\d{3}-\d{4}$", ErrorMessage = "Phone numbers must be in the format (xxx) xxx-xxxx or xxx-xxx-xxxx")]
 
-
+        public string phoneNumber { get; set; }
+  
         [Display(Name = "LinkedIn URL")]
-        public string linkedInURL { get; set; }
         [StringLength(20)]
+        public string linkedInURL { get; set; }
+
 
         //[Display(Name = "Company Location")]
-        public string Location { get; set; }
         [Required(ErrorMessage = "Please enter a Centric Office Location")]
         [StringLength(30)]
+        public string Location { get; set; }
+        
 
-        public ICollection<Value> Value { get; set; }
+      //  public ICollection<Value> Value { get; set; }
 
     }
 }
