@@ -37,7 +37,7 @@ namespace Test_Project.Models
         public string phoneNumber { get; set; }
   
         [Display(Name = "LinkedIn URL")]
-        [StringLength(20)]
+        [StringLength(100)]
         public string linkedInURL { get; set; }
 
 
