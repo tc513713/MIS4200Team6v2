@@ -47,7 +47,7 @@ namespace Test_Project.Models
         public string Location { get; set; }
         
 
-      //  public ICollection<Value> Value { get; set; }
+      // public ICollection<Value> Value { get; set; }
 
     }
 }

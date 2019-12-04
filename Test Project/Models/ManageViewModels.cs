@@ -10,6 +10,21 @@ namespace Test_Project.Models
         public bool HasPassword { get; set; }
         public IList<UserLoginInfo> Logins { get; set; }
         public string PhoneNumber { get; set; }
+
+       /* public string firstName { get; set; }
+
+        public string lastName { get; set; }
+
+        public string email { get; set; }
+
+        public string jobTitle { get; set; }
+
+        public string city  { get; set; }
+
+       */ public string department { get; set; }
+
+        public string pastProjects { get; set; }
+
         public bool TwoFactor { get; set; }
         public bool BrowserRemembered { get; set; }
     }
@@ -83,4 +98,6 @@ namespace Test_Project.Models
         public string SelectedProvider { get; set; }
         public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
     }
+
+    
 }
