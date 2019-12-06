@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using Test_Project.DAL;
 using Test_Project.Models;
 
@@ -13,16 +14,33 @@ namespace Test_Project.Controllers
 {
     public class EmployeesController : Controller
     {
+     
         private MIS4200GroupContext db = new MIS4200GroupContext();
 
         // GET: Employees
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
+            var testUsers = from u in db.employees select u;
+
+            if(!String.IsNullOrEmpty(searchString))
+            {
+                testUsers = testUsers.Where(u =>
+                u.lastName.Contains(searchString) || u.firstName.Contains(searchString));
+                return View(testUsers.ToList());
+            }
+
             return View(db.employees.ToList());
         }
 
+        /* public ActionResult ()
+        {
+            //create a variable to hold the GUID
+
+        }
+        */
+
         // GET: Employees/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(Guid? id)
         {
             if (id == null)
             {
@@ -33,6 +51,15 @@ namespace Test_Project.Controllers
             {
                 return HttpNotFound();
             }
+
+
+
+
+
+
+
+
+
             return View(employee);
         }
 
