@@ -46,8 +46,30 @@ namespace Test_Project.Models
         [StringLength(30)]
         public string Location { get; set; }
         
-
       // public ICollection<Value> Value { get; set; }
+
+
+        public enum location
+        {
+            Boston,
+            Charlotte,
+            Chicago,
+            Cincinnati,
+            Cleveland,
+            Columbus,
+            India,
+            Indianapolis,
+            Louisville,
+            Miami,
+            Seattle,
+            [Display(Name ="St. Louis")]
+            StLouis,
+            Tampa
+        }
+
+        // public enum
+
+
 
     }
 }

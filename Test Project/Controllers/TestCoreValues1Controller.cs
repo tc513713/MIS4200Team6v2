@@ -55,16 +55,57 @@ namespace Test_Project.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "coreId, award description, values recognized, id")] TestCoreValues testCoreValues)
+        public ActionResult Create([Bind(Include = "valueId, description, valuesRecognized, id")] TestCoreValues testCoreValues)
         {
             if (ModelState.IsValid)
             {
                 db.TestCoreValues.Add(testCoreValues);
                 db.SaveChanges();
-                return RedirectToAction("Index");
-            }
 
-            //ViewBag.id = new SelectList(db.employees, "id", firstName", ___.id);
+                SmtpClient myClient = new SmtpClient();
+                // the following line has to contain the email address and password of someone
+                // authorized to use the email server (you will need a valid Ohio account/password
+                // for this to work)
+                myClient.Credentials = new NetworkCredential("AuthorizedUser", "UserPassword");
+                MailMessage myMessage = new MailMessage();
+                // the syntax here is email address, username (that will appear in the email)
+                MailAddress from = new MailAddress("ds028414@ohio.edu", "SysAdmin");
+                myMessage.From = from;
+                // first, the customer found in the order is used to locate the customer record
+                var employee = db.employees.Find(testCoreValues.ID);
+                // then extract the email address from the customer record
+                var employeeEmail = employee.email;
+                // finally, add the email address to the “To” list
+                myMessage.To.Add(employeeEmail);
+                // note: it is possible to add more than one email address to the To list
+                // it is also possible to add CC addresses
+                myMessage.To.Add("ds028414@ohio.edu"); // this should be replaced with model data
+                                                       // as shown at the end of this document
+                myMessage.Subject = "Centric Recognition";
+                // the body of the email is hard coded here but could be dynamically created using data
+                // from the model- see the note at the end of this document
+                myMessage.Body = "Congratulations! You have been recognized for embodying the core values established by Centric.";
+                try
+                {
+                    myClient.Send(myMessage);
+                    TempData["mailError"] = "";
+                    return RedirectToAction("Index");
+                }
+                catch (Exception ex)
+                {
+                    // this captures an Exception and allows you to display the message in the View
+                    TempData["mailError"] = ex.Message;
+                }
+
+            }
+           // return View();
+
+
+
+           // return RedirectToAction("Index");
+            
+
+            ViewBag.id = new SelectList(db.employees, "id", "firstName", testCoreValues.ID);
             return View(testCoreValues);
         }
 
@@ -80,7 +121,7 @@ namespace Test_Project.Controllers
             {
                 return HttpNotFound();
             }
-            //ViewBag.id = new SelectList(db.employees, "id", firstName", ___.id);
+            ViewBag.id = new SelectList(db.employees, "id", "firstName", testCoreValues.ID);
             return View(testCoreValues);
         }
 
@@ -90,7 +131,7 @@ namespace Test_Project.Controllers
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,award,recognizor,recognized,recognizationDate")] TestCoreValues testCoreValues)
+        public ActionResult Edit([Bind(Include = "valueId, description, valuesRecognized, id")] TestCoreValues testCoreValues)
         {
             if (ModelState.IsValid)
             {
@@ -99,7 +140,7 @@ namespace Test_Project.Controllers
                 return RedirectToAction("Index");
             }
 
-            //ViewBag.id = new SelectList(db.employees, "id", firstName", ___.id);
+            ViewBag.id = new SelectList(db.employees, "id", "firstName", testCoreValues.ID);
             return View(testCoreValues);
         }
 
