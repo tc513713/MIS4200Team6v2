@@ -10,13 +10,23 @@ namespace Test_Project.Models
     {
         [Key]
 
-        public int recognitionID { get; set; }
+        public int ID { get; set; }
+
+        //Setting up core value Enum
+        [Display(Name = "CentricValues")]
+        [Range (1,5)]
+        [Required(ErrorMessage = "Please Choose one of Centric's Core Values!")]
+        [StringLength(110)]
+        public CoreValue CentricValues { get; set; }
+
+        //public CoreValue award { get; set; }
+
+        [Display(Name = "Employee")]
+        [Required(ErrorMessage = "Please Enter Your Name!")]
+        [StringLength(110)]
+        public string employee { get; set; }
 
 
-        [Display(Name = "Core value recognized")]
-        public CoreValue award { get; set; }
-        [Display(Name = "ID of Person giving the recognition")]
-        
         public DateTime recognizationDate { get; set; }
         public enum CoreValue
         {
@@ -29,7 +39,7 @@ namespace Test_Project.Models
             Balance = 5
         }
 
-        public GUID ID { get; set; }
+        public GUID id { get; set; }
         public virtual Employee Employee { get; set; }
     }
 }
