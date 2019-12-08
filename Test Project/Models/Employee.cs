@@ -9,18 +9,26 @@ namespace Test_Project.Models
     public class Employee
     {
         [Key]
-        public int userId { get; set; }
+        public GUID id { get; set; }
 
         [Display(Name = "First Name")]
         [Required(ErrorMessage = "Employee First Name is Required")]
-        [StringLength(20)]
+        [StringLength(120)]
         public string firstName { get; set; }
         
 
         [Display(Name = "Last Name")]
         [Required(ErrorMessage = "Employee Last Name is Required")]
-        [StringLength(20)]
+        [StringLength(120)]
         public string lastName { get; set; }
+
+        public string fullName
+        {
+            get
+            {
+                return firstName + ", " + lastName;
+            }
+        }
         
 
         [Display(Name = "Most Used Email Address")]
@@ -51,23 +59,12 @@ namespace Test_Project.Models
 
         public enum location
         {
-            Boston,
-            Charlotte,
-            Chicago,
-            Cincinnati,
-            Cleveland,
-            Columbus,
-            India,
-            Indianapolis,
-            Louisville,
-            Miami,
-            Seattle,
-            [Display(Name ="St. Louis")]
-            StLouis,
-            Tampa
+            //Company locations, setting up selection list
+            Boston, Charlotte, Chicago, Cincinnati, Cleveland, Columbus, India, Indianapolis, Louisville, Miami, Seattle, StLouis, Tampa
+          
         }
 
-        // public enum
+        ICollection<TestCoreValues> testCoreValues { get; set; }
 
 
 
