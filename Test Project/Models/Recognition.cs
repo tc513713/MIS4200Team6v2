@@ -26,17 +26,21 @@ namespace Test_Project.Models
         [StringLength(110)]
         public string employee { get; set; }
 
-
+        [Display(Name = "Date")]
+        [Required(ErrorMessage = "Please Enter Today's Date!")]
+        [StringLength(110)]
         public DateTime recognizationDate { get; set; }
         public enum CoreValue
         {
             [Display(Name = "Please Choose a Value")]
             Select = 0,
-            Excellence = 1,
-            Integrity = 2,
-            Stewardship = 3,
-            Innovate = 4,
-            Balance = 5
+            Stewardship = 1,
+            Culture = 2,
+            Excellence = 3,
+            Innovation = 4,
+            GreaterGood = 5,
+            Integrity = 6,
+            Balance = 7
         }
 
         public GUID id { get; set; }
