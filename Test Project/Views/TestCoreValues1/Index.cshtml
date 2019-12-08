@@ -12,13 +12,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.award)
+            @Html.DisplayNameFor(model => model.Employee.fullName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.recognizor)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.recognized)
+            @Html.DisplayNameFor(model => model.CentricValues)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.recognizationDate)
@@ -29,13 +26,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.award)
+            @Html.DisplayFor(modelItem => item.Employee.firstName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.recognizor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.recognized)
+            @Html.DisplayFor(modelItem => item.CentricValues)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.recognizationDate)
