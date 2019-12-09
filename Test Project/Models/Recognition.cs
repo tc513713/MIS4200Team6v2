@@ -6,44 +6,37 @@ using System.Web;
 
 namespace Test_Project.Models
 {
-    public class TestCoreValues
+    public class Recognition
     {
         [Key]
 
-        public int ID { get; set; }
 
-        //Setting up core value Enum
-        [Display(Name = "CentricValues")]
-        [Range (1,5)]
-        [Required(ErrorMessage = "Please Choose one of Centric's Core Values!")]
-        [StringLength(110)]
-        public CoreValue CentricValues { get; set; }
+        public int recognitionID { get; set; }
 
-        //public CoreValue award { get; set; }
+        [Display(Name = "Description")]
+        [Required(ErrorMessage = "Description Required")]
+        [StringLength(120)]
+        public string description { get; set; }
 
-        [Display(Name = "Employee")]
-        [Required(ErrorMessage = "Please Enter Your Name!")]
-        [StringLength(110)]
-        public string employee { get; set; }
+        [Display(Name = "Values")]
+        [Range(1, 7)]
+        [Required(ErrorMessage = "Please Select a Core Value")]
+        public cValues values { get; set; }
 
-        [Display(Name = "Date")]
-        [Required(ErrorMessage = "Please Enter Today's Date!")]
-        [StringLength(110)]
-        public DateTime recognizationDate { get; set; }
-        public enum CoreValue
+        public enum cValues
         {
-            [Display(Name = "Please Choose a Value")]
+            [Display(Name = "Please Select")]
             Select = 0,
-            Stewardship = 1,
-            Culture = 2,
-            Excellence = 3,
-            Innovation = 4,
-            GreaterGood = 5,
-            Integrity = 6,
-            Balance = 7
+            Stewardship,
+            Culture,
+            DeliveryExcellance,
+            Innovation,
+            GreaterGood,
+            Integrity,
+            Balance
         }
 
-        public GUID id { get; set; }
-        public virtual Employee Employee { get; set; }
+        public Guid id { get; set; }
+        public virtual Profile Profile { get; set; }
     }
 }
