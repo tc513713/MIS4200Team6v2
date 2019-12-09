@@ -15,14 +15,14 @@ namespace Test_Project.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Centric Core Values";
+            ViewBag.Message = "Our Core Values";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Contact Info";
+            ViewBag.Message = "Our Contact Info";
 
             return View();
         }

@@ -40,28 +40,40 @@ namespace Test_Project.Controllers
             {
                 return HttpNotFound();
             }
+          
+            
+            // var recList = db.Recognition.Where(r => r.id == profileID).OrderByDescending(a=>a.description).Take(10);
+
             var recList = db.Recognition.Where(r => r.id == profileID).ToList();
             ViewBag.Profile = recList;
 
             var totalCnt = recList.Count(); //counts all the recognitions for that person
-            var rec1Cnt = recList.Where(r => r.values == Recognition.cValues.DeliveryExcellance).Count();
+            var rec1Cnt = recList.Where(r => r.values == Recognition.coreValues.Stewardship).Count();
             // counts all the Excellence recognitions
             // notice how the Enum values are references, class.enum.value
             // the next two lines show another way to do the same counting
-            var rec2Cnt = recList.Count(r => r.values == Recognition.cValues.Culture);
-            var rec3Cnt = recList.Count(r => r.values == Recognition.cValues.Integrity);
-            var rec4Cnt = recList.Count(r => r.values == Recognition.cValues.Stewardship);
-            var rec5Cnt = recList.Count(r => r.values == Recognition.cValues.Innovation);
-            var rec6Cnt = recList.Count(r => r.values == Recognition.cValues.GreaterGood);
-            var rec7Cnt = recList.Count(r => r.values == Recognition.cValues.Balance);
-            // copy the values into the ViewBag
+            var rec2Cnt = recList.Count(r => r.values == Recognition.coreValues.Culture);
+            var rec3Cnt = recList.Count(r => r.values == Recognition.coreValues.Excellence);
+            var rec4Cnt = recList.Count(r => r.values == Recognition.coreValues.Innovation);
+            var rec5Cnt = recList.Count(r => r.values == Recognition.coreValues.GreaterGood);
+            var rec6Cnt = recList.Count(r => r.values == Recognition.coreValues.Integrity);
+            var rec7Cnt = recList.Count(r => r.values == Recognition.coreValues.Balance);
+           
+           // copy the values into the ViewBag
             ViewBag.total = totalCnt;
-            ViewBag.Excellence = rec1Cnt;
+
+            ViewBag.Stewardship = rec1Cnt;
+
             ViewBag.Culture = rec2Cnt;
-            ViewBag.Integrity = rec3Cnt;
-            ViewBag.Stewardship = rec4Cnt;
-            ViewBag.Innovation = rec5Cnt;
-            ViewBag.GreaterGood = rec6Cnt;
+
+            ViewBag.Excellence = rec3Cnt;
+
+            ViewBag.Innovation = rec4Cnt;
+
+            ViewBag.GreaterGood = rec5Cnt;
+
+            ViewBag.Integrity = rec6Cnt;
+
             ViewBag.Balance = rec7Cnt;
 
             return View(profile);
@@ -84,24 +96,24 @@ namespace Test_Project.Controllers
             ViewBag.Profile = recList;
 
             var totalCnt = recList.Count(); //counts all the recognitions for that person
-            var rec1Cnt = recList.Where(r => r.values == Recognition.cValues.DeliveryExcellance).Count();
+            var rec1Cnt = recList.Where(r => r.values == Recognition.coreValues.Stewardship).Count();
             // counts all the Excellence recognitions
             // notice how the Enum values are references, class.enum.value
             // the next two lines show another way to do the same counting
-            var rec2Cnt = recList.Count(r => r.values == Recognition.cValues.Culture);
-            var rec3Cnt = recList.Count(r => r.values == Recognition.cValues.Integrity);
-            var rec4Cnt = recList.Count(r => r.values == Recognition.cValues.Stewardship);
-            var rec5Cnt = recList.Count(r => r.values == Recognition.cValues.Innovation);
-            var rec6Cnt = recList.Count(r => r.values == Recognition.cValues.GreaterGood);
-            var rec7Cnt = recList.Count(r => r.values == Recognition.cValues.Balance);
+            var rec2Cnt = recList.Count(r => r.values == Recognition.coreValues.Culture);
+            var rec3Cnt = recList.Count(r => r.values == Recognition.coreValues.Excellence);
+            var rec4Cnt = recList.Count(r => r.values == Recognition.coreValues.Innovation);
+            var rec5Cnt = recList.Count(r => r.values == Recognition.coreValues.GreaterGood);
+            var rec6Cnt = recList.Count(r => r.values == Recognition.coreValues.Integrity);
+            var rec7Cnt = recList.Count(r => r.values == Recognition.coreValues.Balance);
             // copy the values into the ViewBag
             ViewBag.total = totalCnt;
-            ViewBag.Excellence = rec1Cnt;
+            ViewBag.Stewardship = rec1Cnt;
             ViewBag.Culture = rec2Cnt;
-            ViewBag.Integrity = rec3Cnt;
-            ViewBag.Stewardship = rec4Cnt;
-            ViewBag.Innovation = rec5Cnt;
-            ViewBag.GreaterGood = rec6Cnt;
+            ViewBag.Excellence = rec3Cnt;
+            ViewBag.Innovation = rec4Cnt;
+            ViewBag.GreaterGood = rec5Cnt;
+            ViewBag.Integrity = rec6Cnt;
             ViewBag.Balance = rec7Cnt;
 
 
@@ -119,12 +131,12 @@ namespace Test_Project.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "profileID,firstName,lastName,businessUnit,hireDate,employeeTitle,phone,email")] Profile profile)
+        public ActionResult Create([Bind(Include = "profileID,firstName,lastName,phone,email,businessUnit,hireDate")] Profile profile)
         {
             if (ModelState.IsValid)
             {
-                //userDetails.ID = Guid.NewGuid(); // original new GUID
-                Guid profileID;  // create a variable to hold the GUID
+                
+                Guid profileID; 
                 Guid.TryParse(User.Identity.GetUserId(), out profileID);
                 profile.ID = profileID;
                 db.Profile.Add(profile);
@@ -157,6 +169,7 @@ namespace Test_Project.Controllers
             {
                 return View("NotAuthenticated");
             }
+
             return View(profile);
         }
 
@@ -165,7 +178,7 @@ namespace Test_Project.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,firstName,lastName,businessUnit,hireDate,employeeTitle,phone,email")] Profile profile)
+        public ActionResult Edit([Bind(Include = "profileID,firstName,lastName,phone,email,businessUnit,hireDate")] Profile profile)
         {
             if (ModelState.IsValid)
             {

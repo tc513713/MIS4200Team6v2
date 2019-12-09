@@ -14,29 +14,30 @@ namespace Test_Project.Models
         public int recognitionID { get; set; }
 
         [Display(Name = "Description")]
-        [Required(ErrorMessage = "Description Required")]
+        [Required(ErrorMessage = "Please enter a description")]
         [StringLength(120)]
         public string description { get; set; }
 
         [Display(Name = "Values")]
         [Range(1, 7)]
-        [Required(ErrorMessage = "Please Select a Core Value")]
-        public cValues values { get; set; }
+        [Required(ErrorMessage = "Please select your Core Value")]
+        public coreValues values { get; set; }
 
-        public enum cValues
+        public enum coreValues
         {
             [Display(Name = "Please Select")]
             Select = 0,
-            Stewardship,
-            Culture,
-            DeliveryExcellance,
-            Innovation,
-            GreaterGood,
-            Integrity,
-            Balance
+            Stewardship=1,
+            Culture=2,
+            Excellence=3,
+            Innovation=4,
+            GreaterGood=5,
+            Integrity=6,
+            Balance=7
         }
 
-        public Guid id { get; set; }
         public virtual Profile Profile { get; set; }
+        public Guid id { get; set; }
+        
     }
 }
