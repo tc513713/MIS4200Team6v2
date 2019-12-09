@@ -8,8 +8,9 @@ namespace Test_Project.Models
 {
     public class Profile
     {
-        [Key]
         // set primary key as guid
+        [Key]
+        
         public Guid ID { get; set; }
         
         [Display(Name = "Employee First Name")]
