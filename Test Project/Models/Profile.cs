@@ -9,9 +9,9 @@ namespace Test_Project.Models
     public class Profile
     {
         [Key]
-
+        // set primary key as guid
         public Guid ID { get; set; }
-        // public int profileID { get; set; }
+        
         [Display(Name = "First Name")]
         [Required(ErrorMessage = "First Name Required")]
         [StringLength(120)]
@@ -20,18 +20,8 @@ namespace Test_Project.Models
         [Required(ErrorMessage = "Last Name Required")]
         [StringLength(120)]
         public string lastName { get; set; }
-        [Display(Name = "Business Unit")]
-        [Required(ErrorMessage = "Business Unit Required")]
-
-        public bUnit businessUnit { get; set; }
-        [Display(Name = "Hire Date")]
-        [Required(ErrorMessage = "Hire Date Required")]
-        [StringLength(120)]
-        public string hireDate { get; set; }
-        [Display(Name = "Employee Title")]
-        [Required(ErrorMessage = "Employee Title Required")]
-
-        public eTitle employeeTitle { get; set; }
+       
+      
         [Display(Name = "Phone Number")]
         [Required(ErrorMessage = "Phone Number Required")]
         [StringLength(12)]
@@ -41,46 +31,25 @@ namespace Test_Project.Models
         [StringLength(120)]
         public string email { get; set; }
 
+        [Display(Name = "Business Unit")]
+        [Required(ErrorMessage = "Business Unit Required")]
 
+        public businessUnitLocation businessUnit { get; set; }
+        [Display(Name = "Hire Date")]
+        [Required(ErrorMessage = "Hire Date Required")]
+        [StringLength(120)]
+        public string hireDate { get; set; }
+      
 
-        public enum bUnit
+        //Used to make a dropdown with each business location available for choosing
+        public enum businessUnitLocation
         {
-            Boston,
-            Charlotte,
-            Chicago,
-            Cincinnati,
-            Cleveland,
-            Columbus,
-            India,
-            Indianapolis,
-            Louisville,
-            Miami,
-            Seattle,
-            [Display(Name = "St. Louis")]
-            StLouis,
-            Tampa
+            Boston, Charlotte, Chicago, Cincinnati, Cleveland, Columbus, India, Indianapolis, Louisville, Miami, Seattle, StLouis, Tampa
+            
         }
-
-        public enum eTitle
-        {
-            Consultant,
-            [Display(Name = "Senior Consultant")]
-            SeniorConsultant,
-            Manager,
-            Architect,
-            [Display(Name = "Senior Manager/Senior Architect")]
-            SeniorManager,
-            Director,
-            VP
-        }
+     
         ICollection<Recognition> Recognition { get; set; }
 
-        public string fullName
-        {
-            get
-            {
-                return lastName + ", " + firstName;
-            }
-        }
+        
     }
 }
