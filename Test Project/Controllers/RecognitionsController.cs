@@ -44,9 +44,9 @@ namespace Test_Project.Controllers
         // GET: Recognitions/Create
         public ActionResult Create()
         {
-            ViewBag.id = new SelectList(db.Profile, "id", "fullName");
+            ViewBag.id = new SelectList(db.Profile, "id", "firstName");
             string empID = User.Identity.GetUserId();
-            SelectList profile = new SelectList(db.Profile, "id", "fullName");
+            SelectList profile = new SelectList(db.Profile, "id", "firstName");
             profile = new SelectList(profile.Where(x => x.Value != empID).ToList(), "Value", "Text");
             ViewBag.recID = profile;
             return View();
@@ -67,7 +67,7 @@ namespace Test_Project.Controllers
                 myClient.Credentials = new NetworkCredential("AuthorizedUser", "UserPassword");
                 MailMessage myMessage = new MailMessage();
                 // the syntax here is email address, username (that will appear in the email)
-                MailAddress from = new MailAddress("jg346015@ohio.edu", "SysAdmin");
+                MailAddress from = new MailAddress("ds028414@ohio.edu", "SysAdmin");
                 myMessage.From = from;
                 // first, the customer found in the order is used to locate the customer record
                 var profile = db.Profile.Find(recognition.id);
@@ -77,12 +77,12 @@ namespace Test_Project.Controllers
                 myMessage.To.Add(profileEmail);
                 // note: it is possible to add more than one email address to the To list
                 // it is also possible to add CC addresses
-                myMessage.To.Add("jg346015@ohio.edu"); // this should be replaced with model data
+                myMessage.To.Add("ds028414@ohio.edu"); // this should be replaced with model data
                                                        // as shown at the end of this document
                 myMessage.Subject = "Centric Recognition";
                 // the body of the email is hard coded here but could be dynamically created using data
                 // from the model- see the note at the end of this document
-                myMessage.Body = "Congratulations! You have received a recognition! Please log into your Centric profile page to view your recognition.";
+                myMessage.Body = "You have received recognition points from a coworker! Congratulations, that's pretty cool!";
                 try
                 {
                     myClient.Send(myMessage);

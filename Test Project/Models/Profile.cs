@@ -12,27 +12,27 @@ namespace Test_Project.Models
         // set primary key as guid
         public Guid ID { get; set; }
         
-        [Display(Name = "First Name")]
-        [Required(ErrorMessage = "First Name Required")]
+        [Display(Name = "Employee First Name")]
+        [Required(ErrorMessage = "Please enter First Name of employee")]
         [StringLength(120)]
         public string firstName { get; set; }
         [Display(Name = "Last Name")]
-        [Required(ErrorMessage = "Last Name Required")]
+        [Required(ErrorMessage = "Please enter Last Name")]
         [StringLength(120)]
         public string lastName { get; set; }
        
       
         [Display(Name = "Phone Number")]
-        [Required(ErrorMessage = "Phone Number Required")]
+        [Required(ErrorMessage = "Please enter Phone Number")]
         [StringLength(12)]
         public string phone { get; set; }
         [Display(Name = "Email")]
-        [Required(ErrorMessage = "Email Required")]
+        [Required(ErrorMessage = "Please enter a valid Email")]
         [StringLength(120)]
         public string email { get; set; }
 
-        [Display(Name = "Business Unit")]
-        [Required(ErrorMessage = "Business Unit Required")]
+        [Display(Name = "Business Unit Location")]
+        [Required(ErrorMessage = "Business Unit Location Required")]
 
         public businessUnitLocation businessUnit { get; set; }
         [Display(Name = "Hire Date")]

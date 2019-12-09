@@ -13,12 +13,12 @@ namespace Test_Project.Models
 
         public int recognitionID { get; set; }
 
-        [Display(Name = "Description")]
-        [Required(ErrorMessage = "Please enter a description")]
+        [Display(Name = "Reason for Award")]
+        [Required(ErrorMessage = "Please enter a reason for award")]
         [StringLength(120)]
         public string description { get; set; }
 
-        [Display(Name = "Values")]
+        [Display(Name = "Centric Value Displayed")]
         [Range(1, 7)]
         [Required(ErrorMessage = "Please select your Core Value")]
         public coreValues values { get; set; }
