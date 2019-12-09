@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Employee Recognition List</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -23,9 +23,7 @@
         <th>
             @Html.DisplayNameFor(model => model.hireDate)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.employeeTitle)
-        </th>
+    
         <th>
             @Html.DisplayNameFor(model => model.phone)
         </th>
@@ -49,9 +47,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.hireDate)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.employeeTitle)
-        </td>
+
         <td>
             @Html.DisplayFor(modelItem => item.phone)
         </td>
@@ -59,9 +55,9 @@
             @Html.DisplayFor(modelItem => item.email)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+           
+            @Html.ActionLink("Employee Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Give Recognition", "Index", "Recognitions")
         </td>
     </tr>
 }
