@@ -13,7 +13,7 @@ namespace Test_Project.Models
         public Guid ID { get; set; }
         
         [Display(Name = "Employee First Name")]
-        [Required(ErrorMessage = "Please enter First Name of employee")]
+        [Required(ErrorMessage = "Please enter the First Name of the employee")]
         [StringLength(120)]
         public string firstName { get; set; }
         [Display(Name = "Last Name")]
