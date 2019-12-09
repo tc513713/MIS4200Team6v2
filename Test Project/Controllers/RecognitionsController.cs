@@ -45,10 +45,10 @@ namespace Test_Project.Controllers
         public ActionResult Create()
         {
             ViewBag.id = new SelectList(db.Profile, "id", "firstName");
-            string empID = User.Identity.GetUserId();
+            string employeeID = User.Identity.GetUserId();
             SelectList profile = new SelectList(db.Profile, "id", "firstName");
-            profile = new SelectList(profile.Where(x => x.Value != empID).ToList(), "Value", "Text");
-            ViewBag.recID = profile;
+            profile = new SelectList(profile.Where(x => x.Value != employeeID).ToList(), "Value", "Text");
+            ViewBag.recognitionID = profile;
             return View();
         }
 
